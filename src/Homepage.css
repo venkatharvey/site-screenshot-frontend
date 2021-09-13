@@ -1,0 +1,66 @@
+.attri {
+  align-items: center;
+  height: 40vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.main {
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  display: flex;
+  z-index: 1;
+}
+.search__box {
+  border-radius: 55px;
+  padding: 30px;
+  background: #f0f3ff;
+  display: flex;
+  align-items: center;
+  box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.15),
+    -0px -0px 10px -1px rgba(255, 255, 255, 0.7);
+}
+.input__box {
+  font-size: 20px;
+  width: 0px;
+  border: 0;
+  background: transparent;
+  outline: none;
+  transition: 2s;
+}
+button {
+  font-size: 30px;
+  padding-left: 10px;
+  border: 0;
+  background: transparent;
+  outline: none;
+}
+
+img {
+  padding-bottom: 9px;
+  width: 40px;
+  cursor: pointer;
+  padding-right: 10px;
+}
+.active {
+  font-size: 20px;
+  width: 500px;
+  border: 0;
+  background: transparent;
+  outline: none;
+  transition: 2s;
+}
+
+.htwd {
+  width: 55px;
+  border: 0;
+  background: transparent;
+  outline: none;
+  padding-bottom: 5px;
+  padding-left: 2px;
+}
+p {
+  padding-top: 40px;
+  padding-left: 770px;
+}
