@@ -9,7 +9,7 @@ function Homepage() {
 const takeScreenShot=async(e)=>{
     e.preventDefault();
     SetDown("Downloading..");
-    axios.post('https://site-screenshot.herokuapp.com/screenshottaker', {
+    axios.post('https://site-screenshot.herokuapp.com/screenshot', {
         url: String(data.url),
         height: parseInt(data.height),
         width:parseInt(data.width),
