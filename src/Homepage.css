@@ -1,6 +1,6 @@
 .attri {
   align-items: center;
-  height: 40vh;
+  height: 30vh;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -50,6 +50,7 @@ img {
   background: transparent;
   outline: none;
   transition: 2s;
+  padding-bottom: 10px;
 }
 
 .htwd {
@@ -59,8 +60,43 @@ img {
   outline: none;
   padding-bottom: 5px;
   padding-left: 2px;
+  padding-right: 2px;
+}
+.htwdt {
+  width: 45px;
+  border: 0;
+  background: transparent;
+  outline: none;
+  padding-bottom: 5px;
+  padding-left: 2px;
+  padding-right: 2px;
 }
 p {
   padding-top: 40px;
-  padding-left: 770px;
+  padding-left: 70%;
+  padding-right: 30%;
+}
+.title {
+  width: 900px;
+  display: flex;
+  padding-left: 39%;
+  padding-top: 80px;
+  background-size: 400%, 400%;
+  color: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  animation: change1 10s ease-in-out infinite;
+}
+h1 {
+  width: 600px;
+}
+
+@keyframes change1 {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 50% 100%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
 }

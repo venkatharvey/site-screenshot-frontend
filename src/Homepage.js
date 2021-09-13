@@ -6,10 +6,17 @@ import axios from 'axios'
 
 
 function Homepage() {  
+
+
 const takeScreenShot=async(e)=>{
-    e.preventDefault();
+    
     SetDown("Downloading..");
-    axios.post('https://site-screenshot.herokuapp.com/screenshot', {
+    e.preventDefault();
+
+    axios.post('http://localhost:5000/screenshot', {
+        
+        quality:parseInt(data.quality),
+        fullscreen:String(data.fullscreen),
         url: String(data.url),
         height: parseInt(data.height),
         width:parseInt(data.width),
@@ -20,6 +27,7 @@ const takeScreenShot=async(e)=>{
       )
       .then(function (res) {
         SetDown("Downloading..");
+        console.log(res);
         const url=window.URL.createObjectURL(new Blob([res.data]));
         const link=document.createElement('a');
         link.href=url;
@@ -29,23 +37,10 @@ const takeScreenShot=async(e)=>{
         SetDown("Downloaded");
       })
       .catch(function (error) {
-          alert("Enter valid url");
+          SetDown("");
+          alert(error);
       });
 }
-
-const [data,setData]=useState(
-    {
-        url:"",
-        height:2000,
-        width:1300,
-        format:"png",
-    }
-)
-
-
-const[active,setActive]=useState("false");
-const[down,SetDown]=useState("");
-
 function clickHandler(){
     setActive(!active);
 }
@@ -54,21 +49,46 @@ function changeHandler(e){
     const newData={...data};
     newData[e.target.id]=e.target.value;
     setData(newData);
+    console.log(newData);
 }
+
+const [data,setData]=useState(
+    {
+        url:"",
+        quality:50,
+        height:800,
+        width:800,
+        format:"png",
+        fullscreen:"yes",
+    }
+);
+const[active,setActive]=useState("false");
+const[down,SetDown]=useState("");
+
+
     return (
+        <>
+        <div className="title">
+                <h1>Capture Websites</h1>
+            </div>
         <div className="container">
-        <div className="attri">
+        <div className="attri">   
             <div className="search__box">
-            
+            <label>Quality:</label>   
+            <input id="quality" onChange={(e)=>changeHandler(e)} className="htwdt"  type="number" max={100} value={data.quality}/>
             <label>Height:</label>   
-            <input id="height" onChange={(e)=>changeHandler(e)} className="htwd"  type="number"  value={data.height}/>
+            <input id="height" onChange={(e)=>changeHandler(e)} className="htwdt"  type="number"  value={data.height}/>
             <label>Width:</label>
-            <input id="width" onChange={(e)=>changeHandler(e)}className="htwd" type="number"  value={data.width}/>
-            
+            <input id="width" onChange={(e)=>changeHandler(e)}className="htwdt" type="number"  value={data.width}/>
+            <label>Format:</label>
             <select id="format" onChange={(e)=>changeHandler(e)} className="htwd" name="format">
             <option value="png">PNG</option>
-            <option value="jpg">JPG</option>
             <option value="jpeg">JPEG</option>
+            </select>
+            <label>Fullscreen:</label>
+            <select id="fullscreen" onChange={(e)=>changeHandler(e)} className="htwd" name="fullscreen">
+            <option value="yes">YES</option>
+            <option value="no">NO</option>
             </select>
             </div>
         </div>
@@ -77,14 +97,15 @@ function changeHandler(e){
              <form onSubmit={e=>takeScreenShot(e)}>   
             <img onClick={clickHandler} id="camImage" src={image} alt=""/>
             
-            <input required id="url" onChange={(e)=>changeHandler(e)} className={active?"input__box":"active"} placeholder=  "  Enter the URL"/>
+            <input required id="url" onChange={(e)=>changeHandler(e)} className={active?"input__box":"active"} placeholder=  "  Enter the URL with http:// or https:// "/>
             
             <button type="submit"><SaveAlt/></button>
             </form>
             </div>
         </div>
         <p><b>{down}</b></p>
-        </div>    
+        </div>
+        </>    
         )
 }
 
