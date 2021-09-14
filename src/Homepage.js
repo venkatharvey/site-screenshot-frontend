@@ -38,7 +38,7 @@ const takeScreenShot=async(e)=>{
       })
       .catch(function (error) {
           SetDown("");
-          alert(error);
+          alert("Please enter url with http:// or https://");
       });
 }
 function clickHandler(){
@@ -75,7 +75,7 @@ const[down,SetDown]=useState("");
         <div className="attri">   
             <div className="search__box">
             <label>Quality:</label>   
-            <input id="quality" onChange={(e)=>changeHandler(e)} className="htwdt"  type="number" max={100} value={data.quality}/>
+            <input id="quality" onChange={(e)=>changeHandler(e)} className="htwdt"  type="number" min={0} max={100} value={data.quality}/>
             <label>Height:</label>   
             <input id="height" onChange={(e)=>changeHandler(e)} className="htwdt"  type="number"  value={data.height}/>
             <label>Width:</label>
