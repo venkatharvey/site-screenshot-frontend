@@ -13,7 +13,7 @@ const takeScreenShot=async(e)=>{
     SetDown("Downloading..");
     e.preventDefault();
 
-    axios.post('https://site-screenshot.herokuapp.com/screenshot', {
+    axios.post('http://venkat-Inspiron-15-3567:5000/screenshot', {
         
         quality:parseInt(data.quality),
         fullscreen:String(data.fullscreen),
@@ -38,7 +38,7 @@ const takeScreenShot=async(e)=>{
       })
       .catch(function (error) {
           SetDown("");
-          alert("Please enter url with http:// or https://");
+          alert("Please Enter a valid url");
       });
 }
 function clickHandler(){
@@ -97,7 +97,7 @@ const[down,SetDown]=useState("");
              <form onSubmit={e=>takeScreenShot(e)}>   
             <img onClick={clickHandler} id="camImage" src={image} alt=""/>
             
-            <input required id="url" onChange={(e)=>changeHandler(e)} className={active?"input__box":"active"} placeholder=  "  Enter the URL with http:// or https:// "/>
+            <input required id="url" onChange={(e)=>changeHandler(e)} className={active?"input__box":"active"} placeholder=  "  Enter URL with   http  or  https "/>
             
             <button type="submit"><SaveAlt/></button>
             </form>
