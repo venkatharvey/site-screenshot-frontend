@@ -13,7 +13,7 @@ const takeScreenShot=async(e)=>{
     SetDown("Downloading..");
     e.preventDefault();
 
-    axios.post('https://site-screenshot-backend.herokuapp.com/screenshot', {
+    axios.post('https://site-screenshot.herokuapp.com/screenshot', {
         
         quality:parseInt(data.quality),
         fullscreen:String(data.fullscreen),
